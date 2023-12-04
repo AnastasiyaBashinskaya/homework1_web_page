@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Отзывы</title>
+    <style>
+        body {
+        font-family: 'Arial', sans-serif;
+        padding: 20px;
+        }
+        
+        input,
+        button {
+        margin: 10px 0;
+        padding: 10px;
+        font-size: 16px;
+        }
+        </style>
+</head>
+<body>
+
+<button id="load-btn">Загрузить</button>
+<button id="clear-btn">Удалить</button>
+<a href="index.html">Добавить отзывы</a>
+<p id="saved-text">Здесь будет отображаться сохраненный текст.</p>
+
+<script>
+
+// Создайте интерактивную веб-страницу для оставления и просмотра отзывов о продуктах. Пользователи могут добавлять отзывы о различных продуктах и просматривать добавленные отзывы.
+// Страница добавления отзыва:
+// Поле для ввода названия продукта.
+// Текстовое поле для самого отзыва.
+// Кнопка "Добавить отзыв", которая сохраняет отзыв о продукте в LocalStorage.
+// Страница просмотра отзывов:
+// Показывает список всех продуктов, о которых были оставлены отзывы.
+// При клике на название продукта отображается список всех отзывов по этому продукту.
+// Возможность удаления отзыва (при нажатии на кнопку "Удалить" рядом с отзывом, данный отзыв удаляется из LocalStorage).
+
+document.getElementById('load-btn').addEventListener('click', () => {
+// получить из localstorage значение
+const savedText = localStorage.getItem('savedText');
+// текстконтентом записать значение из localstorage
+document.getElementById('saved-text').textContent = savedText ? savedText: 'Введите отзыв на продукт!';
+});
+
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+// удалить из localstorage значения
+localStorage.removeItem('savedText');
+document.getElementById('saved-text').textContent = 'Текст очищен!';
+});
+</script>
+
+</body>
+</html>
